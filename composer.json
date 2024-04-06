@@ -2,12 +2,12 @@
     "name": "hexlet/code",
     "bin": [
         "bin/gendiff"
-
     ],
     "description": "project 2",
     "autoload": {
         "files": [
             "src/LibGendiff.php"
+
         ]
     },
     "authors": [

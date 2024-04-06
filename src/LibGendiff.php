@@ -36,4 +36,6 @@ function genDiff(string $PathFile1, string $PathFile2)
     return "\n" . "{" . "\n" . implode("\n", $result) . "\n" . "}";
 }
 
-//var_dump(genDiff('file1.json', 'file2.json'));
+//var_dump(genDiff("file1.json", "file2.json"));
+
+//array_map(fn($key, $item) => $key.$item, array_keys($array1), $array1);
