@@ -35,4 +35,4 @@ $firstFilePath = $args['<firstFile>'];
 $secondFilePath = $args['<secondFile>'];
 //var_dump($firstFilePath);
 //genDiff($firstFilePath,$secondFilePath);
-genDiff($firstFilePath, $secondFilePath);
+var_dump (genDiff($firstFilePath, $secondFilePath));

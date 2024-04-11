@@ -1,4 +1,5 @@
 <?php
+
 namespace Diff;
 
 function genDiff(string $PathFile1, string $PathFile2)
@@ -9,7 +10,6 @@ function genDiff(string $PathFile1, string $PathFile2)
     $array2 = json_decode($dataFile2, true);
     ksort($array1);
     ksort($array2);
-    //var_dump($array1);
     $result = [];
     foreach ($array1 as $key => $value) {
         if ($value === true) {
@@ -33,9 +33,6 @@ function genDiff(string $PathFile1, string $PathFile2)
             $result[] = " + {$key}: {$value}";
         }
     }
+
     return "\n" . "{" . "\n" . implode("\n", $result) . "\n" . "}";
 }
-
-//var_dump(genDiff("file1.json", "file2.json"));
-
-//array_map(fn($key, $item) => $key.$item, array_keys($array1), $array1);
