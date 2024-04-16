@@ -10,8 +10,8 @@ class LibGendiffTest extends TestCase
 {
     public function testGendiff()
     {
-        $path1 = '/Users/oleg/IT/php-project-48/tests/fixtures/file1.json';
-        $path2 = '/Users/oleg/IT/php-project-48/tests/fixtures/file2.json';
+        $path1 = __DIR__.'/fixtures/file1.json';
+        $path2 = __DIR__.'/fixtures/file2.json';
         $expectedLine = "
 {
  - follow: false
