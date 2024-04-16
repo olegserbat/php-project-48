@@ -3,15 +3,14 @@
 namespace Diff\Tests;
 
 use PHPUnit\Framework\TestCase;
-
 use function Diff\genDiff;
 
 class LibGendiffTest extends TestCase
 {
     public function testGendiff()
     {
-        $path1 = __DIR__.'/fixtures/file1.json';
-        $path2 = __DIR__.'/fixtures/file2.json';
+        $path1 = __DIR__ . '/fixtures/file1.json';
+        $path2 = __DIR__ . '/fixtures/file2.json';
         $expectedLine = "
 {
  - follow: false
