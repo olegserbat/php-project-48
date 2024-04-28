@@ -6,8 +6,8 @@
     "description": "project 2",
     "autoload": {
         "files": [
-            "src/LibGendiff.php"
-
+            "src/LibGendiff.php",
+            "src/Parcers.php"
         ]
     },
     "authors": [
@@ -18,7 +18,8 @@
     ],
     "require": {
         "docopt/docopt": "^1.0",
-        "phpunit/phpunit": "^11.0"
+        "phpunit/phpunit": "^11.0",
+        "symfony/yaml": "^7.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.8"

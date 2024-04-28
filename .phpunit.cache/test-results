@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Diff\\Tests\\LibGendiffTest::testGendiff":5},"times":{"Diff\\Tests\\LibGendiffTest::testGendiff":0.058}}
+{"version":1,"defects":{"Diff\\Tests\\LibGendiffTest::testGendiff":8,"Diff\\Tests\\ParcersTest::testPars":5},"times":{"Diff\\Tests\\LibGendiffTest::testGendiff":0.002,"Diff\\Tests\\ParcersTest::testPars":0.003}}

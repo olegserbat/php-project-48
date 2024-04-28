@@ -4,10 +4,8 @@ namespace Diff;
 
 function genDiff(string $PathFile1, string $PathFile2)
 {
-    $dataFile1 = file_get_contents($PathFile1);
-    $array1 = json_decode($dataFile1, true);
-    $dataFile2 = file_get_contents($PathFile2);
-    $array2 = json_decode($dataFile2, true);
+    $array1 = pars($PathFile1);
+    $array2 = pars($PathFile2);
     ksort($array1);
     ksort($array2);
     $result = [];
@@ -36,3 +34,4 @@ function genDiff(string $PathFile1, string $PathFile2)
 
     return "\n" . "{" . "\n" . implode("\n", $result) . "\n" . "}";
 }
+//var_dump(genDiff('/Users/oleg/IT/php-project-48/tests/fixtures/file1.json', '/Users/oleg/IT/php-project-48/tests/fixtures/file2.json'));
