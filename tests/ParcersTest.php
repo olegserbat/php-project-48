@@ -10,10 +10,10 @@ class ParcersTest extends TestCase
 {
     public function testPars()
     {
-        $path1 = '/Users/oleg/IT/php-project-48/tests/fixtures/file1.json';
-        $path2 = '/Users/oleg/IT/php-project-48/tests/fixtures/file3.yaml';
-        $path3 = '/Users/oleg/IT/php-project-48/tests/fixtures/file333.yaml';
-        $path4 = '/Users/oleg/IT/php-project-48/tests/fixtures/file3.txt';
+        $path1 = __DIR__ . '/fixtures/file1.json';
+        $path2 = __DIR__ . '/fixtures/file3.yaml';
+        $path3 = __DIR__ . '/fixtures/file123.json';
+        $path4 = __DIR__ . '/fixtures/file1.txt';
         $rightArray = [
             'host' => "hexlet.io",
             'timeout' => 50,
