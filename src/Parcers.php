@@ -19,6 +19,3 @@ function pars(string $path): array
     }
     return [];
 }
-
-//var_dump(pars('/Users/oleg/IT/php-project-48/tests/fixtures/file3.yaml'));
-//var_dump(pars('/Users/oleg/IT/php-project-48/tests/fixtures/file1.json'));

@@ -34,4 +34,3 @@ function genDiff(string $PathFile1, string $PathFile2)
 
     return "\n" . "{" . "\n" . implode("\n", $result) . "\n" . "}";
 }
-//var_dump(genDiff('/Users/oleg/IT/php-project-48/tests/fixtures/file1.json', '/Users/oleg/IT/php-project-48/tests/fixtures/file2.json'));
