@@ -6,8 +6,12 @@
     "description": "project 2",
     "autoload": {
         "files": [
-            "src/LibGendiff.php",
-            "src/Parcers.php"
+            "src/Formatters.php",
+            "src/Parcers.php",
+            "src/MakeDiff.php",
+            "src/Formatters/json.php",
+            "src/Formatters/plain.php",
+            "src/Formatters/stylish.php"
         ]
     },
     "authors": [

@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 use function Diff\genDiff;
 
-class LibGendiffTest extends TestCase
+class FormattersTest extends TestCase
 {
     public function testGendiff()
     {
