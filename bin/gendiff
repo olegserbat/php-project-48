@@ -12,7 +12,6 @@ if (file_exists($autoloadPath1)) {
 use function Diff\genDiff;
 
 
-
 $doc = <<<DOC
 gendiff -h
 
@@ -34,7 +33,4 @@ $args = Docopt::handle($doc, array('version' => 'gendiff 1.0'));
 $firstFilePath = $args['<firstFile>'];
 $secondFilePath = $args['<secondFile>'];
 $formatName = $args['--format'];
-//var_dump($firstFilePath);
-//genDiff($firstFilePath,$secondFilePath);
 print_r(genDiff($firstFilePath, $secondFilePath, $formatName));
-//var_dump($args['--format']);

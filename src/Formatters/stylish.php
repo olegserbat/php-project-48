@@ -2,8 +2,6 @@
 
 namespace Diff;
 
-use function Diff\printSomeWord;
-
 function getStatus($arr)
 {
     return $arr['status'];

@@ -11,7 +11,7 @@ function makeDiffWithMeta($arr1, $arr2)
         if (array_key_exists($key, $arr1) and !array_key_exists($key, $arr2)) {
             $result[$key] = ['status' => '-', 'arg' => $arr1[$key]];
         } elseif (!array_key_exists($key, $arr1) and array_key_exists($key, $arr2)) {
-            $result[$key] = ['status' => '+',  'arg' => $arr2[$key]];
+            $result[$key] = ['status' => '+', 'arg' => $arr2[$key]];
         } elseif (array_key_exists($key, $arr1) and array_key_exists($key, $arr2)) {
             if (is_array($arr1[$key]) and is_array($arr2[$key])) {
                 $result[$key] = ['status' => 'no', 'arg' => makeDiffWithMeta($arr1[$key], $arr2[$key])];
@@ -21,7 +21,6 @@ function makeDiffWithMeta($arr1, $arr2)
                 $result[$key] = ['status' => 'complex', 'arg' => ['old' => $arr1[$key], 'new' => $arr2[$key]]];
             }
         }
-
     }
     return $result;
 }
