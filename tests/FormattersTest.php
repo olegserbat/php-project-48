@@ -1,9 +1,9 @@
 <?php
 
-namespace Diff\Tests;
+namespace Differ\Tests;
 
 use PHPUnit\Framework\TestCase;
-use function Diff\genDiff;
+use function Differ\genDiff;
 
 class FormattersTest extends TestCase
 {

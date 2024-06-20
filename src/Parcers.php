@@ -1,6 +1,6 @@
 <?php
 
-namespace Diff;
+namespace Differ;
 
 use Symfony\Component\Yaml\Yaml;
 

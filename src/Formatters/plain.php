@@ -1,6 +1,6 @@
 <?php
 
-namespace Diff;
+namespace Differ;
 
 function addPath($arr, $postfix = '')
 {

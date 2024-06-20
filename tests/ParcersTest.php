@@ -1,9 +1,9 @@
 <?php
 
-namespace Diff\Tests;
+namespace Differ\Tests;
 
 use PHPUnit\Framework\TestCase;
-use function Diff\pars;
+use function Differ\pars;
 
 
 class ParcersTest extends TestCase

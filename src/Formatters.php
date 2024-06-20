@@ -1,18 +1,18 @@
 <?php
 
-namespace Diff;
+namespace Differ;
 
 function genDiff($pathToFile1, $pathToFile2, $formatName = 'stylish')
 {
-    $array1 = \Diff\pars($pathToFile1);
-    $array2 = \Diff\pars($pathToFile2);
+    $array1 = \Differ\pars($pathToFile1);
+    $array2 = \Differ\pars($pathToFile2);
     $diff = makeDiffWithMeta($array1, $array2);
     switch ($formatName) {
         case 'stylish':
-            return "{" . \Diff\printStylish($diff) . "\n" . "}";
+            return "{" . \Differ\printStylish($diff) . "\n" . "}";
             break;
         case 'plain':
-            return \Diff\printPlain(\Diff\addPath($diff));
+            return \Differ\printPlain(\Differ\addPath($diff));
             break;
         case 'json':
             return json_encode($diff);
