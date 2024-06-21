@@ -1,6 +1,6 @@
 <?php
 
-namespace Differ;
+namespace Differ\MakeDiff;
 
 function makeDiffWithMeta($arr1, $arr2)
 {

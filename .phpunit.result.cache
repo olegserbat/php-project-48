@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"Diff\\Tests\\FormattersTest::testGendiff":0.024,"Diff\\Tests\\ParcersTest::testPars":0.001}}
+{"version":1,"defects":[],"times":{"Diff\\Tests\\FormattersTest::testGendiff":0.024,"Diff\\Tests\\ParcersTest::testPars":0.001,"Differ\\Tests\\FormattersTest::testGendiff":0.026,"Differ\\Tests\\ParcersTest::testPars":0}}

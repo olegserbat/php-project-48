@@ -1,10 +1,8 @@
 <?php
 
-namespace Differ;
+namespace Differ\Parcers;
 
 use Symfony\Component\Yaml\Yaml;
-
-//require_once "../vendor/autoload.php";
 
 function pars(string $path): array
 {

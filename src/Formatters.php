@@ -1,21 +1,18 @@
 <?php
 
-namespace Differ;
+namespace Differ\Formatters;
 
-function genDiff($pathToFile1, $pathToFile2, $formatName = 'stylish')
+function formatters($diff, $formatName = 'stylish')
 {
-    $array1 = \Differ\pars($pathToFile1);
-    $array2 = \Differ\pars($pathToFile2);
-    $diff = makeDiffWithMeta($array1, $array2);
     switch ($formatName) {
         case 'stylish':
-            return "{" . \Differ\printStylish($diff) . "\n" . "}";
+            return "{" . printStylish($diff) . "\n" . "}";
             break;
         case 'plain':
-            return \Differ\printPlain(\Differ\addPath($diff));
+            return printPlain(addPath($diff));
             break;
         case 'json':
-            return json_encode($diff);
+            return json_encode($diff, JSON_PRETTY_PRINT);
             break;
         default:
             return 'Format is not correct! Please, enter correct format';

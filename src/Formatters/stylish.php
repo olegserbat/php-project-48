@@ -1,6 +1,8 @@
 <?php
 
-namespace Differ;
+namespace Differ\Formatters;
+
+use function Differ\MakeDiff\printSomeWord;
 
 function getStatus($arr)
 {

@@ -3,7 +3,7 @@
 namespace Differ\Tests;
 
 use PHPUnit\Framework\TestCase;
-use function Differ\pars;
+use function Differ\Parcers\pars;
 
 
 class ParcersTest extends TestCase
