@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters;
 
-function addPath(array $arr, $postfix = '')
+function addPath(array $arr, string $postfix = '')
 {
     $result = [];
     foreach ($arr as $key => $value) {
