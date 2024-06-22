@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters;
 
-function formatters($diff, $formatName = 'stylish')
+function formatters(array $diff, string $formatName = 'stylish')
 {
     switch ($formatName) {
         case 'stylish':

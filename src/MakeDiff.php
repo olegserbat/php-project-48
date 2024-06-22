@@ -2,7 +2,7 @@
 
 namespace Differ\MakeDiff;
 
-function makeDiffWithMeta($arr1, $arr2)
+function makeDiffWithMeta(array $arr1, array $arr2)
 {
     $result = [];
     $keys = array_unique(array_merge(array_keys($arr1), array_keys($arr2)));
@@ -25,7 +25,7 @@ function makeDiffWithMeta($arr1, $arr2)
     return $result;
 }
 
-function printSomeWord($str)
+function printSomeWord( $str)
 {
     if ($str === false) {
         return 'false';

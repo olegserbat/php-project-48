@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters;
 
-function addPath($arr, $postfix = '')
+function addPath(array $arr, $postfix = '')
 {
     $result = [];
     foreach ($arr as $key => $value) {
@@ -35,7 +35,7 @@ function printSomeWord($data)
     }
 }
 
-function printPlain($arr)
+function printPlain(array $arr)
 {
     $result = '';
     foreach ($arr as $key => $value) {

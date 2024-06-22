@@ -6,7 +6,7 @@ use function Differ\Formatters\formatters;
 use function Differ\MakeDiff\makeDiffWithMeta;
 use function Differ\Parcers\pars;
 
-function genDiff($pathToFile1, $pathToFile2, $formatName = 'stylish')
+function genDiff(string $pathToFile1, string $pathToFile2, string $formatName = 'stylish')
 {
     $array1 = pars($pathToFile1);
     $array2 = pars($pathToFile2);

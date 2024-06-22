@@ -4,29 +4,29 @@ namespace Differ\Formatters;
 
 use function Differ\MakeDiff\printSomeWord;
 
-function getStatus($arr)
+function getStatus(array $arr)
 {
     return $arr['status'];
 }
 
-function getArg($arr)
+function getArg(array $arr)
 {
     return $arr['arg'];
 }
 
-function printString($indent, $status, $key, $arg)
+function printString(string $indent, string $status, string $key, string $arg)
 {
     return ("\n" . "$indent" . "  {$status} {$key}: {$arg}");
 }
 
-function printArray($indent, $status, $key, $value)
+function printArray(string $indent, string $status, string $key,  $value)
 {
     return "\n" . "{$indent}  {$status} " . "{$key}: {" .
         printStylish($value, $indent .
             str_repeat(' ', 4)) . "\n" . "$indent" . str_repeat(' ', 4) . "}";
 }
 
-function printStylish($arr, $indent = '')
+function printStylish(array $arr, string $indent = '')
 {
     $result = '';
     foreach ($arr as $key => $value) {
