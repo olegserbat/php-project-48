@@ -2,8 +2,6 @@
 
 namespace Differ\Formatters;
 
-use function Differ\MakeDiff\printSomeWord;
-
 function addPath($arr, $postfix = '')
 {
     $result = [];
@@ -22,6 +20,19 @@ function addPath($arr, $postfix = '')
     return $result;
 }
 
+function printSomeWord($data)
+{
+    if ($data === false) {
+        return 'false';
+    } elseif ($data === true) {
+        return 'true';
+    } elseif ($data === null) {
+        return 'null';
+    } else {
+        return "'{$data}'";
+    }
+}
+
 function printPlain($arr)
 {
     $result = '';
@@ -32,7 +43,7 @@ function printPlain($arr)
                     $result = $result . "\n" . "Property '{$value['path']}' was added with value: [complex value]";
                 } else {
                     $item = printSomeWord($value['arg']);
-                    $result = $result . "\n" . "Property '{$value['path']}' was added with value: '{$item}'";
+                    $result = $result . "\n" . "Property '{$value['path']}' was added with value: {$item}";
                 }
                 break;
             case '-':
@@ -43,15 +54,15 @@ function printPlain($arr)
                     $itemNew = printSomeWord($value['arg']['new']);
                     $itemOld = printSomeWord($value['arg']['old']);
                     $result = $result .
-                        "\n" . "Property '{$value['path']}' was updated. From '{$itemOld}' to '{$itemNew}'";
+                        "\n" . "Property '{$value['path']}' was updated. From {$itemOld} to {$itemNew}";
                 } elseif (is_array($value['arg']['old']) and !is_array($value['arg']['new'])) {
                     $itemNew = printSomeWord($value['arg']['new']);
                     $result = $result .
-                        "\n" . "Property '{$value['path']}' was updated. From [complex value] to '{$itemNew}'";
+                        "\n" . "Property '{$value['path']}' was updated. From [complex value] to {$itemNew}";
                 } elseif (!is_array($value['arg']['old']) and is_array($value['arg']['new'])) {
                     $itemOld = printSomeWord($value['arg']['old']);
                     $result = $result .
-                        "\n" . "Property '{$value['path']}' was updated. From '{$itemOld}' to [complex value]";
+                        "\n" . "Property '{$value['path']}' was updated. From {$itemOld} to [complex value]";
                 } else {
                     $result = $result .
                         "\n" . "Property '{$value['path']}' was updated. From [complex value] to [complex value]";
