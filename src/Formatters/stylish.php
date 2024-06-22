@@ -19,7 +19,7 @@ function printString(string $indent, string $status, string $key, string $arg)
     return ("\n" . "$indent" . "  {$status} {$key}: {$arg}");
 }
 
-function printArray(string $indent, string $status, string $key,  $value)
+function printArray(string $indent, string $status, string $key, $value)
 {
     return "\n" . "{$indent}  {$status} " . "{$key}: {" .
         printStylish($value, $indent .

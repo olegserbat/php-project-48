@@ -25,7 +25,7 @@ function makeDiffWithMeta(array $arr1, array $arr2)
     return $result;
 }
 
-function printSomeWord( $str)
+function printSomeWord($str)
 {
     if ($str === false) {
         return 'false';
