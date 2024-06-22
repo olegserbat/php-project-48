@@ -2,7 +2,7 @@ install:
 	composer install
 
 lint:
-	./vendor/bin/phpcs -- -v --standard=PSR12 src
+	./vendor/bin/phpcs -- -v --standard=PSR12 src tests
 
 
 test:
