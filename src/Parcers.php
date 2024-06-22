@@ -4,7 +4,7 @@ namespace Differ\Parcers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function pars($path): array
+function pars(string $path): array
 {
     $extension = pathinfo($path, PATHINFO_EXTENSION);
     if (file_exists($path) and $extension === 'json') {
