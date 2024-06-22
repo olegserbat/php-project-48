@@ -28,6 +28,8 @@ function printSomeWord($data)
         return 'true';
     } elseif ($data === null) {
         return 'null';
+    } elseif ($data === 0) {
+        return '0';
     } else {
         return "'{$data}'";
     }
