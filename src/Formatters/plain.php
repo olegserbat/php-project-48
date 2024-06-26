@@ -20,7 +20,7 @@ function addPath(array $arr, string $postfix = '')
     return $result;
 }
 
-function printSomeWord($data)
+function printSomeWord(mixed $data)
 {
     if ($data === false) {
         return 'false';
