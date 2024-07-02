@@ -37,8 +37,7 @@ function printSomeWord(mixed $data)
 
 function printPlain(array $arr)
 {
-    $result = '';
-    foreach ($arr as $key => $value) {
+    return array_reduce($arr, function ($result, $value) {
         switch ($value['status']) {
             case '+':
                 if (is_array($value['arg'])) {
@@ -73,6 +72,6 @@ function printPlain(array $arr)
             case 'no':
                 $result = $result . printPlain($value['arg']);
         }
-    }
-    return $result;
+        return $result;
+    }, '');
 }

@@ -28,8 +28,8 @@ function printArray(string $indent, string $status, string $key, string|array $v
 
 function printStylish(array $arr, string $indent = '')
 {
-    $result = '';
-    foreach ($arr as $key => $value) {
+    return array_reduce(array_keys($arr), function ($result, $key) use ($arr, $indent) {
+        $value = $arr[$key];
         if (isset($value['status'])) {
             if (!is_array(getArg($value)) or getStatus($value) === 'complex') {
                 switch (getStatus($value)) {
@@ -78,6 +78,6 @@ function printStylish(array $arr, string $indent = '')
                 $result = $result . printString($indent, ' ', $key, $arg);
             }
         }
-    }
-    return $result;
+        return $result;
+    }, '');
 }
