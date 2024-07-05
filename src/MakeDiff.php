@@ -2,6 +2,8 @@
 
 namespace Differ\MakeDiff;
 
+use function Functional\reduce_left;
+
 function makeDiffWithMeta(array $arr1, array $arr2)
 {
     $keys = array_unique(array_merge(array_keys($arr1), array_keys($arr2)));

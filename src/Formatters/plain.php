@@ -2,22 +2,34 @@
 
 namespace Differ\Formatters;
 
-function addPath(array $arr, string $postfix = '')
+function addPath(array $arr, string $postfix = ''): array
 {
-    $result = [];
-    foreach ($arr as $key => $value) {
+    $mapped = array_map(function ($key) use ($arr, $postfix) {
+        $value = $arr[$key];
         if (isset($value['status'])) {
-            if (is_array($value['arg']) and ($value['status'] !== 'complex')) {
-                $result[$key] = ['status' => $value['status'], 'path' => $postfix . $key,
-                    'arg' => addPath($value['arg'], $postfix . $key . ".")];
+            if (is_array($value['arg']) && $value['status'] !== 'complex') {
+                return [
+                    $key => [
+                        'status' => $value['status'],
+                        'path' => $postfix . $key,
+                        'arg' => addPath($value['arg'], $postfix . $key . ".")
+                    ]
+                ];
             } else {
-                $result[$key] = ['status' => $value['status'], 'path' => $postfix . $key, 'arg' => $value['arg']];
+                return [
+                    $key => [
+                        'status' => $value['status'],
+                        'path' => $postfix . $key,
+                        'arg' => $value['arg']
+                    ]
+                ];
             }
         } else {
-            $result[$key] = $value;
+            return [$key => $value];
         }
-    }
-    return $result;
+    }, array_keys($arr));
+
+    return array_merge(...array_values($mapped));
 }
 
 function printSomeWord(mixed $data)
