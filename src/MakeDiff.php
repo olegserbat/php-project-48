@@ -8,7 +8,7 @@ function makeDiffWithMeta(array $arr1, array $arr2)
 {
     $keys = array_unique(array_merge(array_keys($arr1), array_keys($arr2)));
     sort($keys);
-    $arrayWithMeta = array_reduce($keys, function ($result, $key) use ($arr1, $arr2) {
+    $arrayWithMeta = reduce_left($keys, function ($key, $index, $keys, $result) use ($arr1, $arr2) {
         if (array_key_exists($key, $arr1) and !array_key_exists($key, $arr2)) {
             $result[$key] = ['status' => '-', 'arg' => $arr1[$key]];
         } elseif (!array_key_exists($key, $arr1) and array_key_exists($key, $arr2)) {
