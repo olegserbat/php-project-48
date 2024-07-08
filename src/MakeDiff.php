@@ -8,24 +8,23 @@ function makeDiffWithMeta(array $arr1, array $arr2)
 {
     $keys = array_unique(array_merge(array_keys($arr1), array_keys($arr2)));
     sort($keys);
-    $arrayWithMeta = reduce_left($keys, function ($key, $index, $keys, $result) use ($arr1, $arr2) {
-        $newResult = $result;
+    return array_reduce($keys, function ($result, $key) use ($arr1, $arr2) {
+        $value = [];
         if (array_key_exists($key, $arr1) and !array_key_exists($key, $arr2)) {
-            $newResult[$key] = ['status' => '-', 'arg' => $arr1[$key]];
+            $value = ['status' => '-', 'arg' => $arr1[$key]];
         } elseif (!array_key_exists($key, $arr1) and array_key_exists($key, $arr2)) {
-            $newResult[$key] = ['status' => '+', 'arg' => $arr2[$key]];
+            $value = ['status' => '+', 'arg' => $arr2[$key]];
         } elseif (array_key_exists($key, $arr1) and array_key_exists($key, $arr2)) {
             if (is_array($arr1[$key]) and is_array($arr2[$key])) {
-                $newResult[$key] = ['status' => 'no', 'arg' => makeDiffWithMeta($arr1[$key], $arr2[$key])];
+                $value = ['status' => 'no', 'arg' => makeDiffWithMeta($arr1[$key], $arr2[$key])];
             } elseif ($arr1[$key] === $arr2[$key]) {
-                $newResult[$key] = ['status' => 'both', 'arg' => $arr1[$key]];
+                $value = ['status' => 'both', 'arg' => $arr1[$key]];
             } else {
-                $newResult[$key] = ['status' => 'complex', 'arg' => ['old' => $arr1[$key], 'new' => $arr2[$key]]];
+                $value = ['status' => 'complex', 'arg' => ['old' => $arr1[$key], 'new' => $arr2[$key]]];
             }
-        }
-        return $newResult;
+        } $result[$key] = $value;
+        return $result;
     }, []);
-    return $arrayWithMeta;
 }
 
 function printSomeWord(mixed $str)
