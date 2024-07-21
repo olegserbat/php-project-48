@@ -6,7 +6,8 @@ function formatters(array $diff, string $formatName = 'stylish')
 {
     switch ($formatName) {
         case 'stylish':
-            return "{" . printStylish($diff) . "\n" . "}";
+            $diffStylish = printStylish($diff);
+            return "{" . implode('', $diffStylish) . "\n" . "}";
         case 'plain':
             return printPlain(addPath($diff));
         case 'json':

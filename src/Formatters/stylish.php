@@ -4,80 +4,73 @@ namespace Differ\Formatters;
 
 use function Differ\MakeDiff\printSomeWord;
 
-function getStatus(array $arr)
+function printStylish(array $arr, string $indent = ''): array
 {
-    return $arr['status'];
+    $arrayStrings = array_map(function ($value) use ($indent) {
+        switch ($value['status']) {
+            case '+':
+            case '-':
+                if (is_array($value['arg'])) {
+                    return printNonAnilizeArray($value['arg'], $indent, $value['status'], $value['key']);
+                }
+                return printString($value['arg'], $indent, $value['status'], $value['key']);
+            case 'no':
+            case 'both':
+                if (is_array($value['arg'])) {
+                    return printArray($value['arg'], $indent, ' ', $value['key']);
+                }
+                return printString($value['arg'], $indent, ' ', $value['key']);
+            case 'complex':
+                if (is_array($value['arg']['old'])) {
+                    $param1 = printNonAnilizeArray($value['arg']['old'], $indent, '-', $value['key']);
+                } else {
+                    $param1 = printString($value['arg']['old'], $indent, '-', $value['key']);
+                }
+                if (is_array($value['arg']['new'])) {
+                    $param2 = printNonAnilizeArray($value['arg']['new'], $indent, '+', $value['key']);
+                } else {
+                    $param2 = printString($value['arg']['new'], $indent, '+', $value['key']);
+                }
+                return "$param1" . "$param2";
+        }
+    }, $arr);
+    return $arrayStrings;
 }
 
-function getArg(array $arr)
-{
-    return $arr['arg'];
-}
-
-function printString(string $indent, string $status, string $key, string $arg)
-{
-    return ("\n" . "$indent" . "  {$status} {$key}: {$arg}");
-}
-
-function printArray(string $indent, string $status, string $key, string|array $value)
+function printNonAnilizeArray(array $value, string $indent, string $status, string $key): string
 {
     return "\n" . "{$indent}  {$status} " . "{$key}: {" .
-        printStylish($value, $indent .
-            str_repeat(' ', 4)) . "\n" . "$indent" . str_repeat(' ', 4) . "}";
+        implode('', printArrayWithoutStatus($value, $indent .
+            str_repeat(' ', 4))) .
+        "\n" . $indent . str_repeat(' ', 4) . "}";
 }
 
-function printStylish(array $arr, string $indent = '')
+function printString(mixed $value, string $indent, string $status, string $key): string
 {
-    return array_reduce(array_keys($arr), function ($result, $key) use ($arr, $indent) {
-        $value = $arr[$key];
-        if (isset($value['status'])) {
-            if (!is_array(getArg($value)) or getStatus($value) === 'complex') {
-                switch (getStatus($value)) {
-                    case ('+'):
-                    case ('-'):
-                        $arg = printSomeWord(getArg($value));
-                        $result = $result . printString($indent, getStatus($value), $key, $arg);
-                        break;
-                    case 'both':
-                        $arg = printSomeWord(getArg($value));
-                        $result = $result . printString($indent, ' ', $key, $arg);
-                        break;
-                    case 'complex':
-                        if (!is_array($value['arg']['old'])) {
-                            $oldArg = printSomeWord($value['arg']['old']);
-                            $result = $result . printString($indent, '-', $key, $oldArg);
-                        } else {
-                            $result = $result . printArray($indent, '-', $key, $value['arg']['old']);
-                        }
-                        if (!is_array($value['arg']['new'])) {
-                            $newArg = printSomeWord($value['arg']['new']);
-                            $result = $result . printString($indent, '+', $key, $newArg);
-                        } else {
-                            $result = $result . printArray($indent, '+', $key, $value['arg']['new']);
-                        }
-                        break;
-                }
-            } else {
-                switch (getStatus($value)) {
-                    case 'no':
-                        $result = $result . printArray($indent, ' ', $key, getArg($value));
-                        break;
-                    case '-':
-                        $result = $result . printArray($indent, '-', $key, getArg($value));
-                        break;
-                    case '+':
-                        $result = $result . printArray($indent, '+', $key, getArg($value));
-                        break;
-                }
-            }
+    $arg = printSomeWord($value);
+    return "\n" . "$indent" . "  {$status} {$key}: {$arg}";
+}
+
+function printArray(array $value, string $indent, string $status, string $key): string
+{
+    return "\n" . "{$indent}  {$status} " . "{$key}: {" .
+        implode('', printStylish($value, $indent
+            . str_repeat(' ', 4))) .
+        "\n" . "$indent" . str_repeat(' ', 4) . "}";
+}
+
+function printArrayWithoutStatus(array $value, string $indent): array
+{
+    $result = array_map(function ($key, $value) use ($indent) {
+        if (!is_array($value)) {
+            $arg = printSomeWord($value);
+            return "\n" . "$indent" . "    {$key}: {$arg}";
         } else {
-            if (is_array($value)) {
-                $result = $result . printArray($indent, ' ', $key, $value);
-            } else {
-                $arg = printSomeWord($value);
-                $result = $result . printString($indent, ' ', $key, $arg);
-            }
+            return "\n" . "{$indent}    " . "{$key}: {" .
+                implode('', printArrayWithoutStatus($value, $indent .
+                    str_repeat(' ', 4))) .
+                "\n" . $indent . str_repeat(' ', 4) . "}";
         }
-        return $result;
-    }, '');
+    }, array_keys($value), $value);
+    return $result;
 }
