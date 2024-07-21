@@ -2,7 +2,6 @@
 
 namespace Differ\Formatters;
 
-
 function addPath(array $arr, string $postfix = ''): array
 {
     $result = array_map(function ($value) use ($postfix) {
