@@ -4,7 +4,7 @@ namespace Differ\MakeDiff;
 
 use function Functional\sort;
 
-function makeDiffWithMeta($arr1, $arr2)
+function makeDiffWithMeta(array $arr1, array $arr2)
 {
     $keys = array_unique(array_merge(array_keys($arr1), array_keys($arr2)));
     $sortKeys = sort($keys, fn($left, $right) => strcmp($left, $right));
