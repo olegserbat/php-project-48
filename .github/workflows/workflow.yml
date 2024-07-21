@@ -13,32 +13,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Check-out repository under GitHub workspace
-      # https://github.com/actions/checkout
       - uses: actions/checkout@v3
-        # Step's name
-      - name: Setup PHP
-        # Action gives to setup the PHP environment to test application
-        # https://github.com/shivammathur/setup-php
-        uses: shivammathur/setup-php@v2
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
         with:
-          # Specify the PHP version
-          php-version: '8.2'
-      - name: Install
-        # Install project
-        run: make install
-      - name: Run linter
-        # Run Linter
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: UnitTests
+        run: make test
+
+      - name: Linter
         run: make lint
-      # Publish code coverage on Code Climate
-      # https://github.com/paambaati/codeclimate-action
-      # NOTE: uncomment for using workflow
-      - name: Run test & publish code coverage
-        uses: paambaati/codeclimate-action@v5
-        # Add Code Climate secret key
+
+      - name: Climate coverage
+        uses: paambaati/codeclimate-action@v5.0.0
         env:
-           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATETESTCOVERAGE }}
+          XDEBUG_MODE: coverage
         with:
-           coverageCommand: make test-coverage
-           coverageLocations: build/logs/clover.xml:clover
-           debug: true
+          coverageCommand: make test-coverage
+          coverageLocations: ${{ github.workplace }}/build/logs/clover.xml:clover
+          debug: true

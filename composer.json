@@ -22,7 +22,7 @@
     ],
     "require": {
         "docopt/docopt": "^1.0",
-        "phpunit/phpunit": "^9.5.0",
+        "phpunit/phpunit": "^11.2.x-dev",
         "symfony/yaml": "^7.0",
         "lstrojny/functional-php": "^1.17"
     },
