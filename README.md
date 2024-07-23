@@ -1,7 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/olegserbat/php-project-48/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/olegserbat/php-project-48/actions)
 
-https://github.com/olegserbat/php-project-48/blob/main/.github/workflows/workflow.yml/badge.svg
+[![Actions Status](https://github.com/olegserbat/php-project-48/blob/main/.github/workflows/workflow.yml/badge.svg)
 
 
 The fifth step 
