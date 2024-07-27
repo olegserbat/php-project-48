@@ -3,6 +3,8 @@
 
 [![Actions Status](https://github.com/olegserbat/php-project-48/actions/workflows/workflow.yml/badge.svg)](https://myoctocat.com/assets/images/base-octocat.svg)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/6c01c7fc968e5f827b27/test_coverage)](https://codeclimate.com/github/olegserbat/php-project-48/test_coverage)
+
 
 
 The fifth step 

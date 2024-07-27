@@ -1,4 +1,6 @@
 /vendor/
 fileAsciinema.cast
 /reports/
+.phpunit.result.cache
+/.phpunit.cache/
 
