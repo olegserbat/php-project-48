@@ -1,0 +1,124 @@
+[
+    {
+        "key": "common",
+        "status": "no",
+        "arg": [
+            {
+                "key": "follow",
+                "status": "+",
+                "arg": false
+            },
+            {
+                "key": "setting1",
+                "status": "both",
+                "arg": "Value 1"
+            },
+            {
+                "key": "setting2",
+                "status": "-",
+                "arg": 200
+            },
+            {
+                "key": "setting3",
+                "status": "complex",
+                "arg": {
+                    "old": true,
+                    "new": null
+                }
+            },
+            {
+                "key": "setting4",
+                "status": "+",
+                "arg": "blah blah"
+            },
+            {
+                "key": "setting5",
+                "status": "+",
+                "arg": {
+                    "key5": "value5"
+                }
+            },
+            {
+                "key": "setting6",
+                "status": "no",
+                "arg": [
+                    {
+                        "key": "doge",
+                        "status": "no",
+                        "arg": [
+                            {
+                                "key": "wow",
+                                "status": "complex",
+                                "arg": {
+                                    "old": "",
+                                    "new": "so much"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "key": "key",
+                        "status": "both",
+                        "arg": "value"
+                    },
+                    {
+                        "key": "ops",
+                        "status": "+",
+                        "arg": "vops"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "key": "group1",
+        "status": "no",
+        "arg": [
+            {
+                "key": "baz",
+                "status": "complex",
+                "arg": {
+                    "old": "bas",
+                    "new": "bars"
+                }
+            },
+            {
+                "key": "foo",
+                "status": "both",
+                "arg": "bar"
+            },
+            {
+                "key": "nest",
+                "status": "complex",
+                "arg": {
+                    "old": {
+                        "key": "value"
+                    },
+                    "new": "str"
+                }
+            }
+        ]
+    },
+    {
+        "key": "group2",
+        "status": "-",
+        "arg": {
+            "abc": 12345,
+            "deep": {
+                "id": 45
+            }
+        }
+    },
+    {
+        "key": "group3",
+        "status": "+",
+        "arg": {
+            "deep": {
+                "id": {
+                    "number": 45
+                }
+            },
+            "fee": 100500
+        }
+    }
+]
