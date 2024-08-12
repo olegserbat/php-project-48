@@ -47,6 +47,15 @@ class DifferTest extends TestCase
     }
 
     #[DataProvider('dataForTest')]
+    public function testGendiffJson($file, $format = 'json')
+    {
+        $path1 = __DIR__ . '/fixtures/file5.' . $file;
+        $path2 = __DIR__ . '/fixtures/file6.' . $file;
+        $exp = __DIR__ . '/fixtures/expectJson.txt';
+        $this->assertStringEqualsFile($exp, genDiff($path1, $path2, $format));
+    }
+
+    #[DataProvider('dataForTest')]
     public function testGendiffWrongFormat($file, $format = 'erunda')
     {
         $path1 = __DIR__ . '/fixtures/file5.' . $file;
