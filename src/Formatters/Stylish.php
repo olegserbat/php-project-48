@@ -2,8 +2,6 @@
 
 namespace Differ\Formatters;
 
-use function Differ\MakeDiff\printSomeWord;
-
 function printStylish(array $arr, string $indent = ''): array
 {
     $arrayStrings = array_map(function ($value) use ($indent) {
@@ -73,4 +71,17 @@ function printArrayWithoutStatus(array $value, string $indent): array
         }
     }, array_keys($value), $value);
     return $result;
+}
+
+function printSomeWord(mixed $str)
+{
+    if ($str === false) {
+        return 'false';
+    } elseif ($str === true) {
+        return 'true';
+    } elseif ($str === null) {
+        return 'null';
+    } else {
+        return $str;
+    }
 }

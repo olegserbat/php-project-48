@@ -8,10 +8,9 @@
         "files": [
             "src/Formatters.php",
             "src/Parcers.php",
-            "src/MakeDiff.php",
             "src/Differ.php",
-            "src/Formatters/plain.php",
-            "src/Formatters/stylish.php"
+            "src/Formatters/Plain.php",
+            "src/Formatters/Stylish.php"
         ]
     },
     "authors": [
